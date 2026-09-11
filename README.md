@@ -13,7 +13,8 @@ originally by KiworaID / KiwStudio.
 | --- | --- |
 | `ChishikiBP/` | behavior pack (scripts, items, entities) |
 | `ChishikiRP/` | resource pack (UI, textures, lang) |
-| `build.sh` | packs both folders into `dist/*.mcaddon` |
+| `DupeGuard/` | patched DupeGuard anti-dupe pack, see its own README |
+| `build.sh` | packs everything into `dist/` |
 
 Pack UUIDs and versions are unchanged, so this installs over an existing
 KiwEssentials world without breaking saved data.
@@ -22,6 +23,7 @@ KiwEssentials world without breaking saved data.
 
 ```sh
 ./build.sh     # -> dist/ChishikiEssential_FixedHUD_33.2.5.mcaddon
+               #    dist/DupeGuard_1.5.1.mcpack
 ```
 
 ## Changes from upstream
@@ -75,3 +77,14 @@ The admin book intentionally keeps the original dark theme.
 
 Existing worlds keep whatever scoreboard lines they already saved; the new
 colours apply to fresh installs and to anyone who resets to default.
+
+## DupeGuard
+
+`DupeGuard/` holds a patched build of the third-party DupeGuard v1.5.0 anti-dupe
+pack. It is a separate add-on, not part of Chishiki Essential — it just ships
+from the same repo because it runs on the same server.
+
+The headline fix: v1.5.0 treated taking a stack out of a chest as duplication
+and deleted the difference on the player's next join. Item removal is now
+opt-in behind `/cheats:invenforce`. Full write-up and logic tests in
+`DupeGuard/README.md` and `DupeGuard/test/`.

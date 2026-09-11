@@ -1,3 +1,4 @@
 dist/
 *.mcaddon
 .DS_Store
+DupeGuard/test/main.js

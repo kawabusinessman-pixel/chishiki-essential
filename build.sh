@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
-# Packs ChishikiBP/ + ChishikiRP/ into a distributable .mcaddon.
+# Packs the addons in this repo into distributable files under dist/.
 set -euo pipefail
 
 cd "$(dirname "$0")"
-NAME="ChishikiEssential_FixedHUD_33.2.5"
-OUT="dist/${NAME}.mcaddon"
 
 rm -rf dist
 mkdir -p dist
-zip -r -q -X "$OUT" ChishikiBP ChishikiRP \
-  -x '*.DS_Store' -x '__MACOSX/*' -x '*/.gitkeep'
 
-echo "built $OUT ($(du -h "$OUT" | cut -f1))"
+# Chishiki Essential: behavior + resource pack in one .mcaddon
+CHISHIKI="dist/ChishikiEssential_FixedHUD_33.2.5.mcaddon"
+zip -r -q -X "$CHISHIKI" ChishikiBP ChishikiRP \
+  -x '*.DS_Store' -x '__MACOSX/*' -x '*/.gitkeep'
+echo "built $CHISHIKI ($(du -h "$CHISHIKI" | cut -f1))"
+
+# DupeGuard: single behaviour pack, shipped as .mcpack
+DUPEGUARD="dist/DupeGuard_1.5.1.mcpack"
+( cd DupeGuard && zip -r -q -X "../$DUPEGUARD" manifest.json pack_icon.png scripts \
+    -x '*.DS_Store' -x '__MACOSX/*' )
+echo "built $DUPEGUARD ($(du -h "$DUPEGUARD" | cut -f1))"
