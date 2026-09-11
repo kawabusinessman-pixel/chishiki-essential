@@ -1,0 +1,20 @@
+{
+    "format_version": "1.8.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "kiwo:npc",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/pig/pig"
+            },
+            "geometry": {
+                "default": "geometry.kiwo_npc"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

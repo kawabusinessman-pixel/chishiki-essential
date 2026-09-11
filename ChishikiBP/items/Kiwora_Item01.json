@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.20",
+  "minecraft:item": {
+    "description": {
+      "identifier": "kwd:item01",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:glint": true,
+      "minecraft:max_stack_size": 1,
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:display_name": {
+        "value": "§d§5-ADMIN MENU-"
+      },
+      "minecraft:hover_text_color": "light_purple",
+      "minecraft:icon": {
+        "texture": "kiwadmin"
+      },
+      "minecraft:cooldown": {
+        "category": "kwd:item01",
+        "duration": 0.5
+      }
+    }
+  }
+}

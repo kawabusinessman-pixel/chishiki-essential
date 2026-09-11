@@ -1,0 +1,270 @@
+{
+  "namespace": "quick_commands",
+
+  "quick_commands": {
+    "type": "panel",
+    "$toggle_offset|default": [-28, 1],
+    "controls": [
+      { "quick_commands_panel@quick_commands.quick_commands_panel": {} },
+      { "quick_commands_toggle_state@quick_commands.quick_commands_toggle": {} }
+    ]
+  },
+
+  "quick_commands_panel": {
+    "type": "panel",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 109,
+    "offset": [-28, 30],
+    "size": [132, 166],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "quick_commands_toggle_state",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "texture": "textures/chat/emoji_panel_background",
+          "size": ["100%", "100%"],
+          "layer": 0
+        }
+      },
+      {
+        "title": {
+          "type": "label",
+          "text": "commands",
+          "shadow": true,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [0, 7],
+          "layer": 3
+        }
+      },
+      {
+        "commands_scrolling_panel@common.scrolling_panel": {
+          "anchor_to": "top_middle",
+          "anchor_from": "top_middle",
+          "$show_background": false,
+          "size": [120, 130],
+          "offset": [3, 30],
+          "layer": 2,
+          "$scroll_box_mouse_image_control": "emoji.ore_ui_scrollbar_box_image",
+          "$scrolling_content": "quick_commands.command_buttons_panel",
+          "$scroll_box_visible_touch": true,
+          "$scrollbar_always_visible": true,
+          "$scroll_size": [5, 124],
+          "$scrolling_pane_size": [108, 124],
+          "$scrolling_pane_offset": [1, 0],
+          "$scroll_bar_right_padding_size": [1, 0]
+        }
+      }
+    ]
+  },
+
+  "quick_commands_toggle": {
+    "type": "toggle",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "layer": 121,
+    "offset": "$toggle_offset",
+    "size": [18, 18],
+    "toggle_name": "quick_commands_toggle",
+    "unchecked_control": "closed",
+    "unchecked_hover_control": "closed_hover",
+    "checked_control": "open",
+    "checked_hover_control": "open_hover",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "focused"
+      }
+    ],
+    "controls": [
+      {
+        "closed@quick_commands.quick_commands_toggle_content": {
+          "$button_texture": "textures/chat/emoji_button",
+          "$icon_texture": "textures/chat/three_dots",
+          "$icon_offset": [0, -1]
+        }
+      },
+      {
+        "closed_hover@quick_commands.quick_commands_toggle_content": {
+          "$button_texture": "textures/chat/emoji_button_hover",
+          "$icon_texture": "textures/chat/three_dots",
+          "$icon_offset": [0, -1]
+        }
+      },
+      {
+        "open@quick_commands.quick_commands_toggle_content": {
+          "$button_texture": "textures/chat/emoji_button_pressed",
+          "$icon_texture": "textures/chat/three_dots",
+          "$icon_offset": [0, 1]
+        }
+      },
+      {
+        "open_hover@quick_commands.quick_commands_toggle_content": {
+          "$button_texture": "textures/chat/emoji_button_pressed",
+          "$icon_texture": "textures/chat/three_dots",
+          "$icon_offset": [0, 1]
+        }
+      }
+    ]
+  },
+
+  "quick_commands_toggle_content": {
+    "type": "panel",
+    "$button_texture|default": "textures/chat/emoji_button",
+    "$icon_texture|default": "textures/chat/three_dots",
+    "$icon_offset|default": [0, -1],
+    "controls": [
+      {
+        "button_texture": {
+          "type": "image",
+          "texture": "$button_texture",
+          "nineslice_size": 4,
+          "size": [18, 18]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "texture": "$icon_texture",
+          "size": [12, 12],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": "$icon_offset",
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "command_buttons_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": [106, "100%c"],
+    "controls": [
+      { "util_label@quick_commands.category_label": { "$label": "utils" } },
+      { "clear_chat@quick_commands.command_label": { "$command": "/clearchat", "$description": "Clear your chat" } },
+      { "helps@quick_commands.command_label": { "$command": "/helps", "$description": "Show help message" } },
+      { "info@quick_commands.command_label": { "$command": "/info", "$description": "Server info" } },
+      { "rules@quick_commands.command_label": { "$command": "/rules", "$description": "View server rules" } },
+      { "redeem@quick_commands.command_label_new": { "$command": "/redeem [code]", "$description": "Redeem a gift code" } },
+
+      { "menu_label@quick_commands.category_label": { "$label": "menu" } },
+      { "menu@quick_commands.command_label": { "$command": "/menu", "$description": "Open member menu" } },
+      { "job@quick_commands.command_label_new": { "$command": "/kiw:job", "$description": "Open Jobs menu" } },
+      { "shop@quick_commands.command_label": { "$command": "/shop", "$description": "Open shop menu" } },
+      { "sell@quick_commands.command_label": { "$command": "/sell", "$description": "Sell inventory items to shop" } },
+
+      { "travel_label@quick_commands.category_label": { "$label": "travel" } },
+      { "home@quick_commands.command_label_new": { "$command": "/home [name]", "$description": "Teleport to home" } },
+      { "sethome@quick_commands.command_label_new": { "$command": "/sethome [name]", "$description": "Set home at current location" } },
+      { "warp@quick_commands.command_label": { "$command": "/warp [name]", "$description": "List or teleport to warp" } },
+      { "pwarp@quick_commands.command_label_new": { "$command": "/pwarp", "$description": "Open player warp menu" } },
+      { "back@quick_commands.command_label": { "$command": "/back", "$description": "Return to death location" } },
+      { "rtp@quick_commands.command_label": { "$command": "/rtp", "$description": "Random teleport (Overworld)" } },
+      { "rtp_nether@quick_commands.command_label": { "$command": "/rtp_nether", "$description": "Random teleport (Nether)" } },
+      { "rtp_end@quick_commands.command_label": { "$command": "/rtp_end", "$description": "Random teleport (The End)" } },
+      { "tpa@quick_commands.command_label": { "$command": "/tpa", "$description": "Open teleport request menu" } }
+    ]
+  },
+
+  "category_label": {
+    "type": "label",
+    "$label|default": "",
+    "text": "$label",
+    "color": [0.65, 0.65, 0.65],
+    "font_scale_factor": 1,
+    "size": [106, 16],
+    "offset": [2, 0],
+    "localize": false
+  },
+
+  "command_label": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "$command|default": "/help",
+    "$description|default": "",
+    "size": [106, 30],
+    "controls": [
+      {
+        "command": {
+          "type": "label",
+          "text": "$command",
+          "font_scale_factor": 0.8,
+          "localize": false,
+          "size": [106, 12]
+        }
+      },
+      {
+        "description": {
+          "type": "label",
+          "text": "$description",
+          "font_scale_factor": 0.55,
+          "localize": false,
+          "size": [106, 10]
+        }
+      }
+    ]
+  },
+
+  "command_label_new": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "$command|default": "/help",
+    "$description|default": "",
+    "size": [106, 30],
+    "controls": [
+      {
+        "command_row": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [106, 12],
+          "controls": [
+            {
+              "command": {
+                "type": "label",
+                "text": "$command",
+                "font_scale_factor": 0.8,
+                "localize": false,
+                "size": ["default", 12]
+              }
+            },
+            {
+              "new_dot": {
+                "type": "label",
+                "text": " ●",
+                "color": [0.25, 0.92, 0.4],
+                "font_scale_factor": 0.65,
+                "localize": false,
+                "size": ["default", 12],
+                "offset": [2, 1]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "description": {
+          "type": "label",
+          "text": "$description",
+          "font_scale_factor": 0.55,
+          "localize": false,
+          "size": [106, 10]
+        }
+      }
+    ]
+  }
+}

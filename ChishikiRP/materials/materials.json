@@ -1,0 +1,52 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "outline_base": {
+      "vertexShader": "entity.vertex",
+      "fragmentShader": "entity_alphatest.fragment",
+      "+states": [ "EnableStencilTest", "StencilWrite" ],
+      "frontFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "backFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "stencilRef": 2
+    },
+    "outline": {
+      "vertexShader": "entity.vertex",
+      "fragmentShader": "entity.fragment",
+      "+states": [ "InvertCulling", "EnableStencilTest", "DisableDepthWrite", "Blending" ],
+      "+defines": [ "USE_OVERLAY" ],
+      "-defines": [ "FANCY" ],
+      "frontFace": {
+        "stencilFunc": "NotEqual"
+      },
+      "backFace": {
+        "stencilFunc": "Equal"
+      },
+      "stencilRef": 2,
+      "stencilReadMark": 2
+    },
+    "name": {
+      "vertexShader": "entity.vertex",
+      "fragmentShader": "entity_alphatest.fragment",
+      "-defines": [ "FANCY" ]
+    },
+    "entity_beam_additive": {
+      "vertexShader": "entity.vertex",
+      "fragmentShader": "entity_alphablend.fragment",
+      "+defines": [ "ALPHA_TEST" ],
+      "blend": {
+        "blendSrc": "src_alpha",
+        "blendDst": "one"
+      }
+    }
+  }
+}

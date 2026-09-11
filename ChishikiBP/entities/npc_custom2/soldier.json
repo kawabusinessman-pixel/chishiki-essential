@@ -1,0 +1,90 @@
+{
+  "format_version": "1.20.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "sr:soldier",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": true,
+      "animations": {
+        "despawn": "controller.animation.remove"
+      },
+      "scripts": {
+        "animate": [
+          "despawn"
+        ]
+      }
+    },
+    "component_groups": {
+      "ae:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "custom_npc",
+          "npc",
+          "sr"
+        ]
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:scale": {
+        "value": 1
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:collision_box": {
+        "width": 0,
+        "height": 0
+      },
+      "minecraft:custom_hit_test": {
+        "hitboxes": [
+          {
+            "pivot": [
+              0,
+              0.5,
+              0
+            ],
+            "width": 3,
+            "height": 3
+          }
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0
+      },
+      "minecraft:friction_modifier": {
+        "value": 1000
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:knockback_resistance": {
+        "value": 10.0
+      }
+    },
+    "events": {
+      "ae:despawn": {
+        "queue_command": {
+          "command": [
+            "particle minecraft:critical_hit_emitter ~~1~"
+          ],
+          "target": "self"
+        },
+        "add": {
+          "component_groups": [
+            "ae:despawn"
+          ]
+        }
+      }
+    }
+  }
+}

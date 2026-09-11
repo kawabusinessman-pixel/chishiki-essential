@@ -1,0 +1,28 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.float_npc.idle": {
+			"loop": true,
+			"bones": {
+				"npc": {
+					"position": {
+						"1.1667": {
+							"pre": [0, "math.cos(120*(query.life_time+5))*0.8", 0],
+							"post": [0, "math.cos(120*(query.life_time+5))*0.8", 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"crown": {
+					"rotation": [0, "(query.life_time * -360)/11", 0]
+				},
+				"battlepass": {
+					"rotation": [0, "(query.life_time * -360)/7", 0]
+				},
+				"vaults": {
+					"rotation": [0, "(query.life_time * -360)/16", 0]
+				}
+			}
+		}
+	}
+}

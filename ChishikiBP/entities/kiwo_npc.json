@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "kiwo:npc",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "kiwo_npc",
+                    "npc",
+                    "mob"
+                ]
+            },
+            "minecraft:health": {
+                "value": 999999999,
+                "max": 999999999
+            },
+            "minecraft:collision_box": {
+                "width": 1,
+                "height": 1.5
+            },
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "all",
+                    "deals_damage": false
+                }
+            },
+            "minecraft:fire_immune": true,
+            "minecraft:knockback_resistance": {
+                "value": 1
+            },
+            "minecraft:physics": {
+                "has_gravity": false,
+                "has_collision": false
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "filters": {
+                                "all_of": [
+                                    {
+                                        "test": "is_family",
+                                        "subject": "other",
+                                        "value": "player"
+                                    }
+                                ]
+                            }
+                        },
+                        "use_item": false,
+                        "interact_text": "action.interact.talk"
+                    }
+                ]
+            }
+        },
+        "component_groups": {},
+        "events": {}
+    }
+}

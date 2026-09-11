@@ -1,0 +1,93 @@
+{
+    "format_version":  "1.16.100",
+    "minecraft:entity":  {
+                             "description":  {
+                                                 "identifier":  "enchanted:npc_old_mage",
+                                                 "is_spawnable":  true,
+                                                 "is_summonable":  true,
+                                                 "is_experimental":  false,
+                                                 "properties":  {
+                                                                    "sapphire:outline":  {
+                                                                                             "type":  "enum",
+                                                                                             "values":  [
+                                                                                                            "none",
+                                                                                                            "see_through",
+                                                                                                            "not_see_through"
+                                                                                                        ],
+                                                                                             "default":  "none"
+                                                                                         }
+                                                                }
+                                             },
+                             "components":  {
+                                                "minecraft:interact":  {
+                                                                           "interactions":  [
+                                                                                                {
+                                                                                                    "use_item":  false,
+                                                                                                    "on_interact":  {
+                                                                                                                        "target":  "self"
+                                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                       },
+                                                "minecraft:damage_sensor":  {
+                                                                                "triggers":  {
+                                                                                                 "cause":  "all",
+                                                                                                 "deals_damage":  false
+                                                                                             }
+                                                                            },
+                                                "minecraft:type_family":  {
+                                                                              "family":  [
+                                                                                             "npc",
+                                                                                             "mob"
+                                                                                         ]
+                                                                          },
+                                                "minecraft:fire_immune":  true,
+                                                "minecraft:knockback_resistance":  {
+                                                                                       "value":  1
+                                                                                   },
+                                                "minecraft:pushable":  {
+                                                                            "is_pushable":  false,
+                                                                            "is_pushable_by_piston":  false
+                                                                        },
+                                                "minecraft:movement":  {
+                                                                           "value":  0.5
+                                                                       },
+                                                "minecraft:loot":  {
+                                                                       "table":  "loot_tables/empty.json"
+                                                                   },
+                                                "minecraft:collision_box":  {
+                                                                                "width":  0.6,
+                                                                                "height":  2.1
+                                                                            },
+                                                "minecraft:persistent":  {
+
+                                                                         },
+                                                "minecraft:nameable":  {
+                                                                           "always_show":  true,
+                                                                           "allow_name_tag_renaming":  true
+                                                                       },
+                                                "minecraft:physics":  {
+
+                                                                      },
+                                                "minecraft:conditional_bandwidth_optimization":  {
+
+                                                                                                 }
+                                            },
+                             "events":  {
+                                            "npc:despawn":  {
+                                                                "add":  {
+                                                                            "component_groups":  [
+                                                                                                     "npc:despawn"
+                                                                                                 ]
+                                                                        }
+                                                            }
+                                        },
+                             "component_groups":  {
+                                                      "npc:despawn":  {
+                                                                          "minecraft:instant_despawn":  {
+
+                                                                                                        }
+                                                                      }
+                                                  }
+                         }
+}

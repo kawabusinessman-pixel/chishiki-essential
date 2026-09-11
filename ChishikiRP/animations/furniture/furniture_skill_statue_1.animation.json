@@ -1,0 +1,1 @@
+{"format_version":"1.8.0","animations":{"animation.furniture_skill_statue.idle":{"loop":true,"bones":{"tool":{"rotation":["math.sin(query.anim_time * 120) * 6","query.anim_time * 45","math.cos(query.anim_time * 100) * 4"],"position":[0,"math.sin(query.anim_time * 90) * 1",0]}},"particle_effects":{"0.0":{"effect":"furniture_ability_statue","locator":"1"}}}}}

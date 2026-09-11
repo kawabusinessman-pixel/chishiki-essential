@@ -1,0 +1,58 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Chishiki Essential [BP] FixedHUD",
+        "description": "Chishiki Essential [BP] FixedHUD v33.2.5 - mcbe 26.40",
+        "uuid": "7a211304-6b66-4679-8e00-c4ca1529235a",
+        "version": [
+            33,
+            2,
+            5
+        ],
+        "min_engine_version": [
+            1,
+            26,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "4bcdd8db-5e2c-4d6f-a10a-7dffcbb9061d",
+            "version": [
+                33,
+                2,
+                5
+            ]
+        },
+        {
+            "type": "script",
+            "language": "javascript",
+            "uuid": "f3a8e5b7-0475-4ad2-856a-b290aaf4987e",
+            "entry": "scripts/r4isen1920/invsee/main.js",
+            "version": [
+                33,
+                2,
+                5
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "e4f1a9b2-c8d3-4e5f-9a6b-7c0d1e2f3a4b",
+            "version": [
+                33,
+                2,
+                5
+            ]
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "beta"
+        },
+        {
+            "module_name": "@minecraft/server-ui",
+            "version": "beta"
+        }
+    ]
+}

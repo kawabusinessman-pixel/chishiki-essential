@@ -1,0 +1,94 @@
+{
+  "materials": {
+    "version": "1.0.0",
+    "base:entity_alphatest": {
+      "+states": [
+        "EnableStencilTest",
+        "StencilWrite"
+      ],
+      "+defines": [
+        "USE_UV_ANIM"
+      ],
+      "cull_face": "none",
+      "frontFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "backFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "stencilRef": 3
+    },
+    "outline_base:base": {},
+    "outline:outline_not_see_through": {},
+    "entity_alphatest_multicolor_tint_pattern:entity": {
+      "+states": [ "DisableAlphaWrite" ],
+      "+defines": [
+        "ALPHA_TEST",
+        "MULTI_COLOR_TINT"
+      ],
+      "cull_face": "none",
+      "+samplerStates": [
+        {
+          "samplerIndex": 1,
+          "textureWrap": "Repeat"
+        }
+      ]
+    },
+    "additive_alpha:entity_alphatest": {
+      "-defines": [
+        "FANCY"
+      ],
+      "+states": [
+        "Blending",
+        "DisableDepthWrite"
+      ],
+      "alphaSrc": "One",
+      "alphaDst": "One"
+    },
+    "outline_see_through:entity_alphatest": {
+      "+states": [
+        "EnableStencilTest",
+        "InvertCulling"
+      ],
+      "-states": [
+        "DisableCulling"
+      ],
+      "-defines": [
+        "FANCY"
+      ],
+      "+defines": [
+        "USE_UV_ANIM"
+      ],
+      "depthFunc": "Always",
+      "frontFace": {
+        "stencilFunc": "NotEqual"
+      },
+      "stencilRef": 3
+    },
+    "outline_not_see_through:entity_alphatest": {
+      "+states": [
+        "EnableStencilTest",
+        "InvertCulling"
+      ],
+      "-states": [
+        "DisableCulling"
+      ],
+      "-defines": [
+        "FANCY"
+      ],
+      "+defines": [
+        "USE_UV_ANIM"
+      ],
+      "frontFace": {
+        "stencilFunc": "NotEqual"
+      },
+      "stencilRef": 3
+    }
+  }
+}

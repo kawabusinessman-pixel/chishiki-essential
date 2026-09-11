@@ -1,0 +1,4 @@
+{
+  "base_size": [64, 64],
+  "nineslice_size": [8, 8, 8, 8]
+}

@@ -1,0 +1,1351 @@
+{
+  "namespace": "battlepass_ui",
+  "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+
+  "action_panel": {
+    "type": "panel",
+    "size": ["330px", "220px"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "propagate_alpha": true,
+    "controls": [
+      { "window_frame@battlepass_ui.window_frame": {} },
+      { "title@battlepass_ui.title": {} },
+      { "close_button@battlepass_ui.close_button": {} },
+      { "description@battlepass_ui.description": {} },
+      { "main_menu@battlepass_ui.main_menu": {} },
+      { "rewards_menu@battlepass_ui.rewards_menu": {} },
+      { "button_area@battlepass_ui.button_area": {} }
+    ]
+  },
+
+  "window_frame": {
+    "type": "image",
+    "texture": "textures/ui/battlepass/battlepass_window",
+    "size": ["100%", "100%"],
+    "alpha": 1.0
+  },
+
+  "title": {
+    "type": "label",
+    "text": "#title_text",
+    "size": ["198px", "22px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": ["0px", "16px"],
+    "color": [0.96, 0.96, 0.96],
+    "font_type": "MinecraftTen",
+    "font_scale_factor": 1.0,
+    "shadow": true,
+    "text_alignment": "center",
+    "bindings": [
+      { "binding_name": "#title_text", "binding_condition": "once" },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s' - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n' - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w' - '\u00a7b\u00a7p\u00a7q\u00a7u\u00a7e' - '\u00a7b\u00a7p\u00a7d\u00a7a\u00a7i' - '\u00a7b\u00a7p\u00a7w\u00a7e\u00a7e' - '\u00a7b\u00a7p\u00a7p\u00a7r\u00a7e' - '\u00a7b\u00a7p\u00a7d\u00a7e\u00a7t')",
+        "target_property_name": "#text"
+      }
+    ]
+  },
+
+  "close_button": {
+    "type": "button",
+    "size": ["40px", "12px"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": ["0px", "-6px"],
+    "focus_enabled": true,
+    "focus_magnet_enabled": true,
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "button_mappings": [
+      { "from_button_id": "button.menu_select", "to_button_id": "button.menu_exit", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_ok", "to_button_id": "button.menu_exit", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_cancel", "to_button_id": "button.menu_exit", "mapping_type": "global" }
+    ],
+    "controls": [
+      { "default@battlepass_ui.close_state": { "$color": [0.68, 0.13, 0.13] } },
+      { "hover@battlepass_ui.close_state": { "$color": [0.94, 0.22, 0.22] } },
+      { "pressed@battlepass_ui.close_state": { "$color": [0.48, 0.08, 0.08], "$text_offset": ["0px", "1px"] } }
+    ]
+  },
+
+  "close_state": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$color|default": [0.68, 0.13, 0.13],
+    "$text_offset|default": ["0px", "0px"],
+    "controls": [
+      {
+        "border": {
+          "type": "image",
+          "texture": "textures/kiwui/button_default",
+          "nineslice_size": 6,
+          "size": ["100%", "100%"]
+        }
+      },
+      {
+        "fill": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": "$color",
+          "layer": 1
+        }
+      },
+      {
+        "label": {
+          "type": "label",
+          "text": "CLOSE",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": "$text_offset",
+          "color": [1, 1, 1],
+          "font_scale_factor": 0.48,
+          "shadow": true,
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+  "description": {
+    "type": "label",
+    "text": "#form_text",
+    "size": ["280px", "26px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": ["0px", "42px"],
+    "color": [0.9, 0.9, 0.9],
+    "font_scale_factor": 0.6,
+    "shadow": true,
+    "backup_font_type": "unicode",
+    "text_alignment": "center",
+    "line_padding": 1,
+    "bindings": [
+      { "binding_name": "#form_text" },
+      { "binding_type": "view", "source_property_name": "(not (#form_text = ''))", "target_property_name": "#visible" },
+      { "binding_type": "view", "source_property_name": "(#form_text = '')", "target_property_name": "#ignored" }
+    ]
+  },
+
+  "main_menu": {
+    "type": "collection_panel",
+    "size": ["280px", "110px"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": ["0px", "-33px"],
+    "collection_name": "form_buttons",
+    "bindings": [
+      { "binding_name": "#title_text" },
+      { "binding_type": "view", "source_property_name": "((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text)))", "target_property_name": "#visible" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text))))", "target_property_name": "#ignored" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text))))", "target_property_name": "#ignored_by_layout" }
+    ],
+    "controls": [
+      {
+        "your_pass@battlepass_ui.main_tile": {
+          "size": ["150px", "72px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["0px", "0px"],
+          "collection_index": 0
+        }
+      },
+      {
+        "quests@battlepass_ui.main_tile": {
+          "size": ["124px", "53px"],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "offset": ["0px", "0px"],
+          "collection_index": 1
+        }
+      },
+      {
+        "premium@battlepass_ui.main_tile": {
+          "size": ["150px", "36px"],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "offset": ["0px", "0px"],
+          "collection_index": 2
+        }
+      },
+      {
+        "rewards@battlepass_ui.main_tile": {
+          "size": ["124px", "53px"],
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "offset": ["0px", "0px"],
+          "collection_index": 3
+        }
+      }
+    ]
+  },
+
+  "main_tile": {
+    "type": "panel",
+    "size": ["137px", "50px"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      { "button@battlepass_ui.main_tile_button": {} }
+    ]
+  },
+
+  "main_tile_button": {
+    "type": "button",
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "focus_enabled": true,
+    "focus_magnet_enabled": true,
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "locked_control": "hover",
+    "button_mappings": [
+      { "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_cancel", "to_button_id": "button.menu_exit", "mapping_type": "global" }
+    ],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      { "default@battlepass_ui.main_tile_state": {} },
+      { "hover@battlepass_ui.main_tile_state": {} },
+      { "pressed@battlepass_ui.main_tile_state": {} }
+    ]
+  },
+
+  "main_tile_state": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      { "background": { "type": "image", "texture": "textures/kiwui/button_default", "alpha": 0.96, "nineslice_size": 6, "size": ["100%", "100%"], "layer": 1 } },
+      {
+        "your_pass_tint": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": [0.22, 0.22, 0.22],
+          "alpha": 0.88,
+          "layer": 2,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'YOUR PASS') = #form_button_text))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "quests_tint": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": [0.15, 0.16, 0.38],
+          "alpha": 0.9,
+          "layer": 2,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'QUESTS') = #form_button_text))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "premium_tint": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": [0.34, 0.58, 0.0],
+          "alpha": 0.9,
+          "layer": 2,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'PREMIUM') = #form_button_text))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "rewards_tint": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": [0.68, 0.24, 0.01],
+          "alpha": 0.9,
+          "layer": 2,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'REWARDS') = #form_button_text))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "your_pass_content": {
+          "type": "panel",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "alpha": 1,
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'YOUR PASS') = #form_button_text))", "target_property_name": "#visible" }
+          ],
+          "controls": [
+            {
+              "art@battlepass_ui.main_tile_art": {
+                "$texture": "textures/ui/battlepass/battlepass_your_pass",
+                "$size": ["60px", "60px"],
+                "$anchor_from": "center",
+                "$anchor_to": "center",
+                "$offset": ["0px", "-4px"]
+              }
+            },
+            {
+              "label@battlepass_ui.main_tile_label": {
+                "$anchor_from": "bottom_middle",
+                "$anchor_to": "bottom_middle",
+                "$offset": ["0px", "-12px"]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "quests_content": {
+          "type": "panel",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "alpha": 1,
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'QUESTS') = #form_button_text))", "target_property_name": "#visible" }
+          ],
+          "controls": [
+            {
+              "art@battlepass_ui.main_tile_art": {
+                "$texture": "textures/ui/battlepass/battlepass_quests",
+                "$size": ["52px", "52px"],
+                "$anchor_from": "bottom_middle",
+                "$anchor_to": "bottom_middle",
+                "$offset": ["0px", "-1px"]
+              }
+            },
+            {
+              "label@battlepass_ui.main_tile_label": {
+                "$anchor_from": "top_middle",
+                "$anchor_to": "top_middle",
+                    "$offset": ["0px", "2px"]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "premium_content": {
+          "type": "panel",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "alpha": 1,
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'PREMIUM') = #form_button_text))", "target_property_name": "#visible" }
+          ],
+          "controls": [
+            {
+              "art@battlepass_ui.main_tile_art": {
+                "$texture": "textures/ui/battlepass/battlepass_premium",
+                "$size": ["28px", "28px"],
+                "$anchor_from": "left_middle",
+                "$anchor_to": "left_middle",
+                "$offset": ["12px", "0px"]
+              }
+            },
+            {
+              "label@battlepass_ui.main_tile_label": {
+                "$anchor_from": "center",
+                "$anchor_to": "center",
+                "$offset": ["20px", "1px"]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "rewards_content": {
+          "type": "panel",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "alpha": 1,
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#form_button_text - 'REWARDS') = #form_button_text))", "target_property_name": "#visible" }
+          ],
+          "controls": [
+            {
+              "art@battlepass_ui.main_tile_art": {
+                "$texture": "textures/ui/battlepass/battlepass_rewards",
+                "$size": ["52px", "52px"],
+                "$anchor_from": "bottom_middle",
+                "$anchor_to": "bottom_middle",
+                "$offset": ["0px", "-1px"]
+              }
+            },
+            {
+              "label@battlepass_ui.main_tile_label": {
+                "$anchor_from": "top_middle",
+                "$anchor_to": "top_middle",
+                    "$offset": ["0px", "2px"]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "main_tile_art": {
+    "type": "image",
+    "texture": "$texture",
+    "size": "$size",
+    "anchor_from": "$anchor_from",
+    "anchor_to": "$anchor_to",
+    "offset": "$offset",
+    "keep_ratio": true,
+    "layer": 4
+  },
+
+  "main_tile_label": {
+    "type": "label",
+    "text": "#battlepass_button_text",
+    "size": ["99px", "16px"],
+    "anchor_from": "$anchor_from",
+    "anchor_to": "$anchor_to",
+    "offset": "$offset",
+    "color": [1, 1, 1],
+    "alpha": 1,
+    "font_type": "MinecraftTen",
+    "font_scale_factor": 0.7,
+    "shadow": true,
+    "line_padding": 0,
+    "text_alignment": "center",
+    "layer": 6,
+    "bindings": [
+      { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+      {
+        "binding_type": "view",
+        "source_property_name": "(#form_button_text - '\u00a70' - '\u00a71' - '\u00a72' - '\u00a73' - '\u00a74' - '\u00a75' - '\u00a76' - '\u00a77' - '\u00a78' - '\u00a79' - '\u00a7a' - '\u00a7b' - '\u00a7c' - '\u00a7d' - '\u00a7e' - '\u00a7f' - '\u00a7r')",
+        "target_property_name": "#battlepass_button_text"
+      }
+    ]
+  },
+
+  "rewards_menu": {
+    "type": "panel",
+    "size": ["280px", "110px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": ["0px", "58px"],
+    "bindings": [
+      { "binding_name": "#title_text" },
+      { "binding_type": "view", "source_property_name": "((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text)))", "target_property_name": "#visible" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored_by_layout" }
+    ],
+    "controls": [
+      { "track_art@battlepass_ui.reward_track_art": {} },
+      {
+        "free_label@battlepass_ui.reward_track_label": {
+          "$text": "FREE",
+          "$offset": ["0px", "31px"],
+          "$color": [1, 1, 1]
+        }
+      },
+      {
+        "premium_label@battlepass_ui.reward_track_label": {
+          "$text": "PREMIUM",
+          "$offset": ["0px", "52px"],
+          "$color": [1, 1, 1]
+        }
+      },
+      { "reward_collection@battlepass_ui.reward_collection": {} }
+    ]
+  },
+
+  "reward_track_art": {
+    "type": "image",
+    "texture": "textures/ui/battlepass/battlepass_rewards_track",
+    "size": ["280px", "96px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "keep_ratio": false,
+    "layer": 1
+  },
+
+  "reward_track_label": {
+    "type": "label",
+    "$text|default": "FREE",
+    "$offset|default": ["0px", "31px"],
+    "$color|default": [1, 1, 1],
+    "text": "$text",
+    "size": ["64px", "10px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": "$offset",
+    "color": "$color",
+    "font_type": "MinecraftTen",
+    "font_scale_factor": 0.48,
+    "shadow": true,
+    "text_alignment": "center",
+    "layer": 5
+  },
+
+  "reward_collection": {
+    "type": "collection_panel",
+    "size": ["280px", "110px"],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "collection_name": "form_buttons",
+    "layer": 6,
+    "bindings": [
+      { "binding_name": "#title_text" },
+      { "binding_type": "view", "source_property_name": "((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text)))", "target_property_name": "#visible" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (not ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored_by_layout" }
+    ],
+    "controls": [
+      { "free_1@battlepass_ui.free_reward_slot_first": { "offset": ["17px", "12px"], "collection_index": 0 } },
+      { "free_2@battlepass_ui.free_reward_slot": { "offset": ["50px", "12px"], "collection_index": 1 } },
+      { "free_3@battlepass_ui.free_reward_slot": { "offset": ["82px", "12px"], "collection_index": 2 } },
+      { "free_4@battlepass_ui.free_reward_slot": { "offset": ["115px", "12px"], "collection_index": 3 } },
+      { "free_5@battlepass_ui.free_reward_slot": { "offset": ["148px", "12px"], "collection_index": 4 } },
+      { "free_6@battlepass_ui.free_reward_slot": { "offset": ["180px", "12px"], "collection_index": 5 } },
+      { "free_7@battlepass_ui.free_reward_slot": { "offset": ["213px", "12px"], "collection_index": 6 } },
+      { "free_8@battlepass_ui.free_reward_slot_last": { "offset": ["246px", "12px"], "collection_index": 7 } },
+      { "premium_1@battlepass_ui.premium_reward_slot_first": { "offset": ["17px", "63px"], "collection_index": 8 } },
+      { "premium_2@battlepass_ui.premium_reward_slot": { "offset": ["50px", "63px"], "collection_index": 9 } },
+      { "premium_3@battlepass_ui.premium_reward_slot": { "offset": ["82px", "63px"], "collection_index": 10 } },
+      { "premium_4@battlepass_ui.premium_reward_slot": { "offset": ["115px", "63px"], "collection_index": 11 } },
+      { "premium_5@battlepass_ui.premium_reward_slot": { "offset": ["148px", "63px"], "collection_index": 12 } },
+      { "premium_6@battlepass_ui.premium_reward_slot": { "offset": ["180px", "63px"], "collection_index": 13 } },
+      { "premium_7@battlepass_ui.premium_reward_slot": { "offset": ["213px", "63px"], "collection_index": 14 } },
+      { "premium_8@battlepass_ui.premium_reward_slot_last": { "offset": ["246px", "63px"], "collection_index": 15 } },
+      {
+        "back@battlepass_ui.reward_nav_button": {
+          "size": ["46px", "11px"],
+          "offset": ["14px", "98px"],
+          "collection_index": 16,
+          "$default_color": [0.68, 0.13, 0.13],
+          "$hover_color": [0.94, 0.22, 0.22],
+          "$pressed_color": [0.48, 0.08, 0.08]
+        }
+      },
+      { "previous@battlepass_ui.reward_nav_button": { "size": ["24px", "11px"], "offset": ["117px", "98px"], "collection_index": 17, "$icon_anchor": "center", "$icon_offset": ["0px", "0px"] } },
+      { "next@battlepass_ui.reward_nav_button": { "size": ["24px", "11px"], "offset": ["145px", "98px"], "collection_index": 18, "$icon_anchor": "center", "$icon_offset": ["0px", "0px"] } }
+    ]
+  },
+
+  "reward_slot": {
+    "type": "panel",
+    "size": ["18px", "15px"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.free_reward_slot_content": {} }
+    ]
+  },
+
+  "free_reward_slot@battlepass_ui.reward_slot": {
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.free_reward_slot_content": {} }
+    ]
+  },
+
+  "free_reward_slot_first@battlepass_ui.reward_slot": {
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.free_reward_slot_content_first": {} }
+    ]
+  },
+
+  "free_reward_slot_last@battlepass_ui.reward_slot": {
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.free_reward_slot_content_last": {} }
+    ]
+  },
+
+  "premium_reward_slot@battlepass_ui.reward_slot": {
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.premium_reward_slot_content": {} }
+    ]
+  },
+
+  "premium_reward_slot_first@battlepass_ui.reward_slot": {
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.premium_reward_slot_content_first": {} }
+    ]
+  },
+
+  "premium_reward_slot_last@battlepass_ui.reward_slot": {
+    "controls": [
+      { "button@battlepass_ui.reward_slot_button": {} },
+      { "content@battlepass_ui.premium_reward_slot_content_last": {} }
+    ]
+  },
+
+  "reward_slot_button": {
+    "type": "button",
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "focus_enabled": true,
+    "focus_magnet_enabled": true,
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "button_mappings": [
+      { "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_cancel", "to_button_id": "button.menu_exit", "mapping_type": "global" }
+    ],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      { "default@battlepass_ui.reward_slot_state": { "$state_alpha": 0.0 } },
+      { "hover@battlepass_ui.reward_slot_state": { "$state_alpha": 0.0 } },
+      { "pressed@battlepass_ui.reward_slot_state": { "$state_alpha": 0.0 } }
+    ]
+  },
+
+  "reward_slot_state": {
+    "type": "image",
+    "$state_alpha|default": 0.0,
+    "texture": "textures/ui/White",
+    "size": ["100%", "100%"],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "color": [0.75, 0.9, 1.0],
+    "alpha": "$state_alpha",
+    "layer": 2
+  },
+
+  "free_reward_slot_content": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      {
+        "progress_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["31px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-25px", "28px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_node": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["6px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["5px", "27px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": ["0px", "0px"],
+          "keep_ratio": true,
+          "layer": 5,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "free_reward_slot_content_first": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      {
+        "progress_cap": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["4px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-5px", "27px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["7px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-2px", "28px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_node": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["7px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["5px", "27px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": ["0px", "0px"],
+          "keep_ratio": true,
+          "layer": 5,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "free_reward_slot_content_last": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      {
+        "progress_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["31px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-25px", "28px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_node": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["6px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["5px", "27px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_end_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["6px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["11px", "28px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_cap": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["3px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["17px", "27px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": ["0px", "0px"],
+          "keep_ratio": true,
+          "layer": 5,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "premium_reward_slot_content": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      {
+        "progress_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["31px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-25px", "20px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_node": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["6px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["5px", "19px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": ["0px", "0px"],
+          "keep_ratio": true,
+          "layer": 5,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "premium_reward_slot_content_first": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      {
+        "progress_cap": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["4px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-5px", "19px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["7px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-2px", "20px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_node": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["7px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["5px", "19px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": ["0px", "0px"],
+          "keep_ratio": true,
+          "layer": 5,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "premium_reward_slot_content_last": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      {
+        "progress_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["31px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["-25px", "20px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_node": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["6px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["5px", "19px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_end_line": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["6px", "2px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["11px", "20px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 3,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "progress_cap": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["3px", "4px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["17px", "19px"],
+          "color": [0.25, 0.90, 0.20],
+          "layer": 4,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "((not ((#form_button_text - 'AVAILABLE') = #form_button_text)) or (not ((#form_button_text - 'CLAIMED') = #form_button_text)))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "offset": ["0px", "0px"],
+          "keep_ratio": true,
+          "layer": 5,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "reward_nav_button": {
+    "type": "button",
+    "size": ["28px", "11px"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$default_color|default": [0.36, 0.36, 0.36],
+    "$hover_color|default": [0.55, 0.55, 0.55],
+    "$pressed_color|default": [0.24, 0.24, 0.24],
+    "$icon_anchor|default": "left_middle",
+    "$icon_offset|default": ["3px", "0px"],
+    "focus_enabled": true,
+    "focus_magnet_enabled": true,
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "button_mappings": [
+      { "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_cancel", "to_button_id": "button.menu_exit", "mapping_type": "global" }
+    ],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      { "default@battlepass_ui.reward_nav_state": { "$color": "$default_color" } },
+      { "hover@battlepass_ui.reward_nav_state": { "$color": "$hover_color" } },
+      { "pressed@battlepass_ui.reward_nav_state": { "$color": "$pressed_color", "$content_offset": ["0px", "2px"] } }
+    ]
+  },
+
+  "reward_nav_state": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$color|default": [0.36, 0.36, 0.36],
+    "$content_offset|default": ["0px", "1px"],
+    "controls": [
+      {
+        "border": {
+          "type": "image",
+          "texture": "textures/kiwui/button_default",
+          "nineslice_size": 6,
+          "size": ["100%", "100%"]
+        }
+      },
+      {
+        "fill": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "size": ["100% - 4px", "100% - 4px"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": "$color",
+          "layer": 1
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["8px", "8px"],
+          "anchor_from": "$icon_anchor",
+          "anchor_to": "$icon_anchor",
+          "offset": "$icon_offset",
+          "layer": 2,
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "label": {
+          "type": "label",
+          "text": "#reward_nav_text",
+          "size": ["100% - 12px", "9px"],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "offset": "$content_offset",
+          "color": [1, 1, 1],
+          "font_type": "MinecraftTen",
+          "font_scale_factor": 0.38,
+          "shadow": true,
+          "text_alignment": "center",
+          "layer": 2,
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#form_button_text - '\u00a70' - '\u00a71' - '\u00a72' - '\u00a73' - '\u00a74' - '\u00a75' - '\u00a76' - '\u00a77' - '\u00a78' - '\u00a79' - '\u00a7a' - '\u00a7b' - '\u00a7c' - '\u00a7d' - '\u00a7e' - '\u00a7f' - '\u00a7r')",
+              "target_property_name": "#reward_nav_text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "button_area": {
+    "type": "panel",
+    "size": ["280px", "110px"],
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": ["0px", "-33px"],
+    "bindings": [
+      { "binding_name": "#title_text" },
+      { "binding_type": "view", "source_property_name": "((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text) and ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text)))", "target_property_name": "#visible" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text) and ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text) and ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored_by_layout" }
+    ],
+    "controls": [
+      {
+        "scrolling@common.scrolling_panel": {
+          "size": ["100%", "100%"],
+          "$show_background": false,
+          "$scrolling_content": "battlepass_ui.button_contents",
+          "$scrolling_content_anchor_from": "top_left",
+          "$scrolling_content_anchor_to": "top_left",
+          "$scroll_size": ["4px", "100%"],
+          "$scroll_bar_right_padding_size": ["0px", "0px"],
+          "$allow_scrolling_even_when_content_fits": false,
+          "$allow_scroll_even_when_content_fits": false,
+          "$jump_to_bottom_on_update": false
+        }
+      }
+    ]
+  },
+
+  "button_contents": {
+    "type": "stack_panel",
+    "size": ["100% - 6px", "100%c"],
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "factory": {
+      "name": "buttons",
+      "control_ids": {
+        "button": "@battlepass_ui.menu_button",
+        "label": "@battlepass_ui.menu_label",
+        "header": "@battlepass_ui.menu_header",
+        "divider": "@settings_common.option_group_section_divider",
+        "spacer": "@battlepass_ui.menu_spacer"
+      }
+    },
+    "collection_name": "form_buttons",
+    "bindings": [
+      { "binding_name": "#title_text" },
+      { "binding_type": "view", "source_property_name": "((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text) and ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text)))", "target_property_name": "#visible" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text) and ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored" },
+      { "binding_type": "view", "source_property_name": "(not ((not ((#title_text - '\u00a7b\u00a7p\u00a7a\u00a7s\u00a7s') = #title_text)) and (((#title_text - '\u00a7b\u00a7p\u00a7m\u00a7a\u00a7i\u00a7n') = #title_text) and ((#title_text - '\u00a7b\u00a7p\u00a7r\u00a7e\u00a7w') = #title_text))))", "target_property_name": "#ignored_by_layout" },
+      { "binding_name": "#form_button_contents", "binding_name_override": "#collection_length" }
+    ]
+  },
+
+  "menu_button": {
+    "type": "button",
+    "size": ["100%", "27px"],
+    "focus_enabled": true,
+    "focus_magnet_enabled": true,
+    "default_control": "default",
+    "hover_control": "hover",
+    "pressed_control": "pressed",
+    "button_mappings": [
+      { "from_button_id": "button.menu_select", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_ok", "to_button_id": "button.form_button_click", "mapping_type": "pressed" },
+      { "from_button_id": "button.menu_cancel", "to_button_id": "button.menu_exit", "mapping_type": "global" }
+    ],
+    "bindings": [
+      { "binding_type": "collection_details", "binding_collection_name": "form_buttons" }
+    ],
+    "controls": [
+      { "default@battlepass_ui.menu_button_state": {} },
+      { "hover@battlepass_ui.menu_button_state": {} },
+      { "pressed@battlepass_ui.menu_button_state": {} }
+    ]
+  },
+
+  "menu_button_state": {
+    "type": "panel",
+    "size": ["100%", "100% - 5px"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "texture": "textures/kiwui/button_default",
+          "alpha": 0.96,
+          "nineslice_size": 6,
+          "size": ["100%", "100%"]
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "size": ["14px", "14px"],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": ["5px", "0px"],
+          "bindings": [
+            { "binding_name": "#form_button_texture", "binding_name_override": "#texture", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_name": "#form_button_texture_file_system", "binding_name_override": "#texture_file_system", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            { "binding_type": "view", "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))", "target_property_name": "#visible" }
+          ]
+        }
+      },
+      {
+        "label": {
+          "type": "label",
+          "text": "#battlepass_button_text",
+          "size": ["100% - 31px", "16px"],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": ["22px", "3px"],
+          "color": [1, 1, 1],
+          "font_scale_factor": 0.5,
+          "shadow": true,
+          "text_alignment": "left",
+          "bindings": [
+            { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" },
+            {
+              "binding_type": "view",
+              "source_property_name": "(#form_button_text - '\u00a70' - '\u00a71' - '\u00a72' - '\u00a73' - '\u00a74' - '\u00a75' - '\u00a76' - '\u00a77' - '\u00a78' - '\u00a79' - '\u00a7a' - '\u00a7b' - '\u00a7c' - '\u00a7d' - '\u00a7e' - '\u00a7f' - '\u00a7r')",
+              "target_property_name": "#battlepass_button_text"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "menu_label@settings_common.option_group_spaced_label": {
+    "$text": "#form_button_text",
+    "$text_bindings": [
+      { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" }
+    ]
+  },
+
+  "menu_header@settings_common.option_group_spaced_header": {
+    "$text": "#form_button_text",
+    "$text_bindings": [
+      { "binding_name": "#form_button_text", "binding_type": "collection", "binding_collection_name": "form_buttons" }
+    ]
+  },
+
+  "menu_spacer": {
+    "type": "panel",
+    "size": ["100%", "4px"]
+  }
+}

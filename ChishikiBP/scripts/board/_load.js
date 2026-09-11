@@ -1,0 +1,5 @@
+import "./main.js"
+import "./data.js"
+import "./scoreboard.js"
+import "./chat.js"
+import "./nametag.js"

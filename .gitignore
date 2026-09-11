@@ -1,0 +1,3 @@
+dist/
+*.mcaddon
+.DS_Store

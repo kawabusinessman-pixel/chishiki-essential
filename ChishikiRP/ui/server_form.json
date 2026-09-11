@@ -1,0 +1,45 @@
+{
+  "namespace": "server_form",
+
+  "third_party_server_screen": {
+    "$screen_content": "server_form.main_screen_content",
+    "$screen_background_alpha": 0.22,
+    "$screen_bg_content": "common.screen_background",
+    "$screen_helpers_content": "common.common_screen_helpers",
+    "render_game_behind": true,
+    "absorbs_input": true,
+    "$screen_animations": [
+      "@common.container_screen_exit_animation_push",
+      "@common.container_screen_exit_animation_pop",
+      "@common.container_screen_entrance_animation_push",
+      "@common.container_screen_entrance_animation_pop",
+      "@common.screen_exit_animation_push_fade",
+      "@common.screen_exit_animation_pop_fade",
+      "@common.screen_entrance_animation_push_fade",
+      "@common.screen_entrance_animation_pop_fade"
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
+      }
+    ]
+  },
+
+  "main_screen_content": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "server_form_factory": {
+          "type": "factory",
+          "control_ids": {
+            "long_form": "@next_ui.next_long_form",
+            "custom_form": "@next_ui.next_modal_form"
+          }
+        }
+      }
+    ]
+  }
+}

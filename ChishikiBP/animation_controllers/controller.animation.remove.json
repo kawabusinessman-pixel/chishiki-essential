@@ -1,0 +1,20 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.remove": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"cancel_animation": "!q.is_alive"
+						}
+					]
+				},
+				"cancel_animation": {
+					"on_entry": ["@s ae:remove"]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+import "./Database.js";
+import "./ForceOpen.js";
+import "./getDate.js";
+import "./getPlaceholder.js";
+import "./getScore.js";
+import "./getRank.js";
+import "./getClan.js";
+import "./moneySystem.js";
+import "./scoreValidator.js";
+import "./timeSystem.js";

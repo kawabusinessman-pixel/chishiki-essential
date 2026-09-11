@@ -1,0 +1,38 @@
+{
+  "format_version": "1.18.30",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "qidb:storage",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "components": {
+      "minecraft:inventory": {
+        "container_type": "container",
+        "inventory_size": 256,
+        "private": true,
+        "can_be_siphoned_from": false,
+        "restrict_to_owner": false
+      },
+      "minecraft:persistent": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:collision_box": {
+        "width": 0.01,
+        "height": 0.01
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "deals_damage": false
+        }
+      }
+    }
+  }
+}

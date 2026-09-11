@@ -1,0 +1,336 @@
+{
+  "namespace": "kiw_search",
+
+  "placeholder_marquee": {
+    "anim_type": "offset",
+    "easing": "linear",
+    "from": [200, 0],
+    "to": [-280, 0],
+    "duration": 12.0,
+    "next": "@kiw_search.placeholder_marquee"
+  },
+
+  "toggle_icon_content": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$icon_alpha|default": 0.96,
+    "$icon_color|default": [1, 1, 1],
+    "$toggle_bg_texture|default": "textures/ui/custom/shop_arrow_bg",
+    "$toggle_bg_nineslice|default": [6, 6, 6, 6],
+    "controls": [
+      {
+        "bg": {
+          "type": "image",
+          "texture": "$toggle_bg_texture",
+          "nineslice_size": "$toggle_bg_nineslice",
+          "size": ["100%", "100%"],
+          "alpha": "$icon_alpha",
+          "layer": 0
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "texture": "textures/ui/search/magnifying_glass",
+          "size": [10, 10],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "color": "$icon_color",
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "search_bar_toggle": {
+    "type": "toggle",
+    "size": "$search_toggle_size",
+    "anchor_from": "$search_toggle_anchor_from",
+    "anchor_to": "$search_toggle_anchor_to",
+    "offset": "$search_toggle_offset",
+    "layer": "$search_toggle_layer",
+    "toggle_name": "$search_toggle_name",
+    "toggle_default_state": false,
+    "unchecked_control": "closed",
+    "unchecked_hover_control": "closed_hover",
+    "checked_control": "open",
+    "checked_hover_control": "open_hover",
+    "unchecked_locked_control": "closed",
+    "unchecked_locked_hover_control": "closed_hover",
+    "checked_locked_control": "open",
+    "checked_locked_hover_control": "open_hover",
+    "$search_toggle_size|default": [16, 16],
+    "$search_toggle_anchor_from|default": "top_right",
+    "$search_toggle_anchor_to|default": "top_right",
+    "$search_toggle_offset|default": [-4, 0],
+    "$search_toggle_layer|default": 12,
+    "$search_toggle_name|default": "kiw_search_toggle",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "focused"
+      }
+    ],
+    "controls": [
+      {
+        "closed@kiw_search.toggle_icon_content": {
+          "$icon_alpha": 0.9,
+          "$icon_color": [0.75, 0.9, 1],
+          "$toggle_bg_texture": "textures/ui/custom/shop_arrow_bg"
+        }
+      },
+      {
+        "closed_hover@kiw_search.toggle_icon_content": {
+          "$icon_alpha": 1,
+          "$icon_color": [0.9, 0.98, 1],
+          "$toggle_bg_texture": "textures/ui/custom/shop_arrow_bg"
+        }
+      },
+      {
+        "open@kiw_search.toggle_icon_content": {
+          "$icon_alpha": 0.9,
+          "$icon_color": [0.75, 0.9, 1],
+          "$toggle_bg_texture": "textures/ui/custom/shop_arrow_bg"
+        }
+      },
+      {
+        "open_hover@kiw_search.toggle_icon_content": {
+          "$icon_alpha": 1,
+          "$icon_color": [0.9, 0.98, 1],
+          "$toggle_bg_texture": "textures/ui/custom/shop_arrow_bg"
+        }
+      }
+    ]
+  },
+
+  "search_edit_box": {
+    "type": "edit_box",
+    "size": ["100% - 16px", "100% - 2px"],
+    "anchor_from": "right_middle",
+    "anchor_to": "right_middle",
+    "offset": [-1, 0],
+    "max_length": 48,
+    "text_box_name": "$search_text_box_name",
+    "text_control": "kiw_search_text",
+    "place_holder_control": "kiw_search_placeholder",
+    "default_control": "default",
+    "hover_control": "hover",
+    "can_be_deselected": true,
+    "focus_enabled": true,
+    "enabled_newline": false,
+    "layer": 3,
+    "$search_text_box_name|default": "kiw_ui_search_box",
+    "$search_placeholder|default": "Search...",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "handle_select": true,
+        "handle_deselect": false,
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "handle_select": false,
+        "handle_deselect": true,
+        "mapping_type": "global",
+        "consume_event": false
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_select",
+        "handle_select": true,
+        "handle_deselect": false,
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_select",
+        "handle_select": false,
+        "handle_deselect": true,
+        "mapping_type": "global"
+      },
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_select",
+        "handle_select": false,
+        "handle_deselect": true,
+        "mapping_type": "pressed"
+      }
+    ],
+    "controls": [
+      { "default": { "type": "panel", "size": ["100%", "100%"] } },
+      { "hover": { "type": "panel", "size": ["100%", "100%"] } },
+      {
+        "kiw_search_placeholder": {
+          "type": "label",
+          "text": "$search_placeholder",
+          "color": [0.55, 0.62, 0.7],
+          "font_scale_factor": 0.85,
+          "shadow": false,
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [2, 0],
+          "layer": 1
+        }
+      },
+      {
+        "kiw_search_text": {
+          "type": "label",
+          "text": "#item_name",
+          "color": [0.92, 0.96, 1],
+          "font_scale_factor": 0.9,
+          "shadow": false,
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [2, 0],
+          "layer": 2,
+          "property_bag": {
+            "#item_name": "",
+            "#property_field": "#item_name"
+          }
+        }
+      }
+    ]
+  },
+
+  "form_search_field": {
+    "type": "panel",
+    "size": "$form_search_size",
+    "anchor_from": "$form_search_anchor_from",
+    "anchor_to": "$form_search_anchor_to",
+    "offset": "$form_search_offset",
+    "layer": "$form_search_layer",
+    "$form_search_size|default": ["100% - 16px", 18],
+    "$form_search_anchor_from|default": "top_left",
+    "$form_search_anchor_to|default": "top_left",
+    "$form_search_offset|default": [8, 36],
+    "$form_search_layer|default": 20,
+    "$search_text_box_name|default": "kiw_ui_search_box",
+    "$search_placeholder|default": "Search...",
+    "$search_field_bg|default": "textures/ui/custom/custom_bg",
+    "$search_field_bg_nineslice|default": 3,
+    "$search_field_bg_alpha|default": 0.94,
+    "controls": [
+      {
+        "bg": {
+          "type": "image",
+          "texture": "$search_field_bg",
+          "nineslice_size": "$search_field_bg_nineslice",
+          "alpha": "$search_field_bg_alpha",
+          "size": ["100%", "100%"],
+          "layer": 0
+        }
+      },
+      {
+        "edge_top": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "color": [0.45, 0.7, 0.95],
+          "alpha": 0.28,
+          "size": ["100%", 1],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "layer": 1
+        }
+      },
+      {
+        "edge_bottom": {
+          "type": "image",
+          "texture": "textures/ui/White",
+          "color": [0.35, 0.55, 0.8],
+          "alpha": 0.2,
+          "size": ["100%", 1],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "layer": 1
+        }
+      },
+      {
+        "icon": {
+          "type": "image",
+          "texture": "textures/ui/search/magnifying_glass",
+          "size": [10, 10],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "offset": [5, 0],
+          "color": [0.7, 0.85, 1],
+          "layer": 2
+        }
+      },
+      {
+        "edit@kiw_search.search_edit_box": {
+          "$search_text_box_name": "$search_text_box_name",
+          "$search_placeholder": "$search_placeholder",
+          "size": ["100% - 22px", "100% - 2px"],
+          "offset": [-2, 0]
+        }
+      }
+    ]
+  },
+
+  "header_search_field@kiw_search.form_search_field": {
+    "$form_search_size|default": ["100% - 196px", 18],
+    "$form_search_anchor_from|default": "left_middle",
+    "$form_search_anchor_to|default": "left_middle",
+    "$form_search_offset|default": [98, 0],
+    "$form_search_layer|default": 8
+  },
+
+  "search_host": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "layer": 80,
+    "propagate_alpha": true,
+    "$search_toggle_size|default": [16, 16],
+    "$search_toggle_anchor_from|default": "top_right",
+    "$search_toggle_anchor_to|default": "top_right",
+    "$search_toggle_offset|default": [-4, 4],
+    "$search_toggle_layer|default": 90,
+    "$search_toggle_name|default": "kiw_search_toggle",
+    "$search_dropdown_size|default": ["100% - 24px", 16],
+    "$search_dropdown_anchor_from|default": "top_middle",
+    "$search_dropdown_anchor_to|default": "top_middle",
+    "$search_dropdown_offset|default": [0, 22],
+    "$search_text_box_name|default": "kiw_ui_search_box",
+    "$search_placeholder|default": "Search...",
+    "controls": [
+      {
+        "kiw_search_bar_toggle@kiw_search.search_bar_toggle": {
+          "$search_toggle_size": "$search_toggle_size",
+          "$search_toggle_anchor_from": "$search_toggle_anchor_from",
+          "$search_toggle_anchor_to": "$search_toggle_anchor_to",
+          "$search_toggle_offset": "$search_toggle_offset",
+          "$search_toggle_layer": "$search_toggle_layer",
+          "$search_toggle_name": "$search_toggle_name"
+        }
+      },
+      {
+        "search_dropdown@kiw_search.form_search_field": {
+          "$form_search_size": "$search_dropdown_size",
+          "$form_search_anchor_from": "$search_dropdown_anchor_from",
+          "$form_search_anchor_to": "$search_dropdown_anchor_to",
+          "$form_search_offset": "$search_dropdown_offset",
+          "$form_search_layer": 91,
+          "$search_text_box_name": "$search_text_box_name",
+          "$search_placeholder": "$search_placeholder",
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "kiw_search_bar_toggle",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

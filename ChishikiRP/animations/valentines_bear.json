@@ -1,0 +1,1 @@
+{"format_version":"1.8.0","animations":{"animation.hive.backbling.valentines_bear.balloon":{"loop":true,"bones":{"balloon_string":{"relative_to":{"rotation":"entity"},"rotation":["variable.string_rx","-query.body_y_rotation","variable.string_rz"]},"balloon":{"rotation":["variable.balloon_rx","variable.balloon_ry","variable.balloon_rz"]}}}}}

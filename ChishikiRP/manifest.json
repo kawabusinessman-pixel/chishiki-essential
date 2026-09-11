@@ -1,0 +1,142 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "Chishiki Essential [RP] FixedHUD",
+        "description": "Chishiki Essential Resources [RP] FixedHUD v33.2.5 - mcbe 26.40",
+        "uuid": "e4f1a9b2-c8d3-4e5f-9a6b-7c0d1e2f3a4b",
+        "version": [
+            33,
+            2,
+            5
+        ],
+        "min_engine_version": [
+            1,
+            21,
+            0
+        ],
+        "pack_scope": "world"
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+            "version": [
+                33,
+                2,
+                5
+            ]
+        }
+    ],
+    "dependencies": [
+        {
+            "uuid": "7a211304-6b66-4679-8e00-c4ca1529235a",
+            "version": [
+                33,
+                2,
+                5
+            ]
+        }
+    ],
+    "subpacks": [
+        {
+            "folder_name": "crab",
+            "name": "Crab - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "fox",
+            "name": "Fox - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "bee",
+            "name": "Bee - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "frog",
+            "name": "Frog - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "dolphin",
+            "name": "Dolphin - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "whale",
+            "name": "Whale - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "jellyfish",
+            "name": "Jellyfish - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "axolotl",
+            "name": "Axolotl - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "rabbit",
+            "name": "Rabbit - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "raven",
+            "name": "Raven - Separate Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "crab-unified",
+            "name": "Crab - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "fox-unified",
+            "name": "Fox - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "bee-unified",
+            "name": "Bee - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "frog-unified",
+            "name": "Frog - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "dolphin-unified",
+            "name": "Dolphin - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "whale-unified",
+            "name": "Whale - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "jellyfish-unified",
+            "name": "Jellyfish - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "axolotl-unified",
+            "name": "Axolotl - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "rabbit-unified",
+            "name": "Rabbit - Combined Logo",
+            "memory_tier": 0
+        },
+        {
+            "folder_name": "raven-unified",
+            "name": "Raven - Combined Logo",
+            "memory_tier": 0
+        }
+    ]
+}

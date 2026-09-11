@@ -1,0 +1,12 @@
+{
+  "resource_pack_name": "kiwora",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "kiwadmin": {
+      "textures": "textures/items/kiwadmin"
+    },
+    "kiwmember": {
+      "textures": "textures/items/kiwmember"
+    }
+  }
+}

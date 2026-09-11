@@ -1,0 +1,24 @@
+{
+  "ui_defs": [
+    "ui/_global_variables.json",
+    "ui/ui_common.json",
+    "ui/search_bar.json",
+    "ui/vkf.json",
+    "ui/battlepass/battlepass_ui.json",
+    "ui/scb_presets_ui.json",
+    "ui/simple_ui.json",
+    "ui/kiw_shop.json",
+    "ui/chest_inventory_system.json",
+    "ui/chest_server_form.json",
+    "ui/server_form.json",
+    "ui/r4isen1920/invsee/inventory.r4ui",
+    "ui/popup_dialog.json",
+    "ui/chest_screen.json",
+    "ui/pocket_containers.json",
+    "ui/emoji/emoji_panel.json",
+    "ui/quick_commands/quick_commands_panel.json",
+    "ui/chat_screen.json",
+    "ui/kiw_hud.json",
+    "ui/hud_screen.json"
+  ]
+}

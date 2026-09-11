@@ -1,0 +1,48 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "sr:pirate",
+      "materials": {
+        "default": "outline_base"
+      },
+      "textures": {
+        "default": "textures/entity/npc/pirate"
+      },
+      "geometry": {
+        "default": "geometry.pirate.sera.npc"
+      },
+      "scripts": {
+        "pre_animation": [
+          "v.interact_range = 13;",
+          "v.cam_y_rot = q.camera_rotation(1) - q.rotation_to_camera(1) + 180;",
+          "v.cam_y_rot = v.cam_y_rot > 180 ? v.cam_y_rot-360 : v.cam_y_rot;",
+          "v.cam_y_size = (1/query.distance_from_camera)*22.5;",
+          "v.cam_y_size = query.distance_from_camera < 4 ? v.cam_y_size*2 : v.cam_y_size;",
+          "v.is_selected_y = (v.cam_y_rot > v.cam_y_size || v.cam_y_rot < -v.cam_y_size) ? 0 : 1;",
+          "v.cam_x_rot = -q.camera_rotation(0) - q.rotation_to_camera(0) - (60/query.distance_from_camera);",
+          "v.cam_x_rot = v.cam_x_rot > 180 ? v.cam_x_rot-360: v.cam_x_rot;",
+          "v.cam_x_size = (1/query.distance_from_camera)*90;",
+          "v.cam_x_size = query.distance_from_camera < 4 ? v.cam_x_size*4 : v.cam_x_size;",
+          "v.is_selected_x = (v.cam_x_rot > v.cam_x_size || v.cam_x_rot < -v.cam_x_size) ? 0 : 1;",
+          "v.is_selected_range = query.distance_from_camera <= v.interact_range;",
+          "v.is_selected = v.is_selected_x && v.is_selected_y && v.is_selected_range;"
+        ],
+        "animate": [
+          "idle"
+        ]
+      },
+
+      "animations": {
+        "idle": "animation.pirate.sera.idle"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "spawn_egg": {
+        "overlay_color": "#2F4F4F",
+        "base_color": "#DC143C"
+      }
+    }
+  }
+}

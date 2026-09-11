@@ -1,0 +1,215 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.backpack.sera.npc",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "NPC",
+					"pivot": [0, 11.75, 0],
+					"rotation": [-5.625, -16.875, 0]
+				},
+				{
+					"name": "backpack",
+					"parent": "NPC",
+					"pivot": [0, 21, -1]
+				},
+				{
+					"name": "topStrap",
+					"parent": "backpack",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{
+							"origin": [3, 29.75, 3],
+							"size": [2, 4, 2],
+							"uv": {
+								"north": {"uv": [1, 10], "uv_size": [1, 1]},
+								"east": {"uv": [1, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 10], "uv_size": [1, 1]},
+								"west": {"uv": [1, 10], "uv_size": [1, 1]},
+								"up": {"uv": [2, 11], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 11], "uv_size": [-1, -1]}
+							}
+						},
+						{
+							"origin": [-5, 29.75, 3],
+							"size": [2, 4, 2],
+							"uv": {
+								"north": {"uv": [1, 7], "uv_size": [1, 1]},
+								"east": {"uv": [1, 7], "uv_size": [1, 1]},
+								"south": {"uv": [1, 7], "uv_size": [1, 1]},
+								"west": {"uv": [1, 7], "uv_size": [1, 1]},
+								"up": {"uv": [2, 8], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 8], "uv_size": [-1, -1]}
+							}
+						},
+						{
+							"origin": [-3, 33.75, 3],
+							"size": [6, 2, 2],
+							"uv": {
+								"north": {"uv": [1, 7], "uv_size": [1, 1]},
+								"east": {"uv": [1, 7], "uv_size": [1, 1]},
+								"south": {"uv": [1, 7], "uv_size": [1, 1]},
+								"west": {"uv": [1, 7], "uv_size": [1, 1]},
+								"up": {"uv": [2, 8], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 8], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				},
+				{
+					"name": "flap",
+					"parent": "backpack",
+					"pivot": [0, 29.75, 1.5],
+					"cubes": [
+						{
+							"origin": [-8, 23.75, -5],
+							"size": [16, 6, 2],
+							"uv": {
+								"north": {"uv": [8, 12], "uv_size": [8, 3]},
+								"east": {"uv": [4, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 10], "uv_size": [1, 1]},
+								"west": {"uv": [4, 10], "uv_size": [1, 1]},
+								"up": {"uv": [16, 16], "uv_size": [-8, -1]},
+								"down": {"uv": [5, 11], "uv_size": [-1, -1]}
+							}
+						},
+						{
+							"origin": [-8, 29.75, -3],
+							"size": [16, 2, 6],
+							"uv": {
+								"north": {"uv": [16, 15], "uv_size": [-8, 1]},
+								"east": {"uv": [5, 10], "uv_size": [-1, 1]},
+								"south": {"uv": [8, 16], "uv_size": [8, 1]},
+								"west": {"uv": [5, 10], "uv_size": [-1, 1]},
+								"up": {"uv": [16, 20], "uv_size": [-8, -3]},
+								"down": {"uv": [1, 11], "uv_size": [1, -1]}
+							}
+						},
+						{
+							"origin": [-6, 21.75, -5],
+							"size": [12, 2, 2],
+							"uv": {
+								"north": {"uv": [4, 10], "uv_size": [1, 1]},
+								"east": {"uv": [4, 10], "uv_size": [1, 1]},
+								"south": {"uv": [4, 10], "uv_size": [1, 1]},
+								"west": {"uv": [4, 10], "uv_size": [1, 1]},
+								"up": {"uv": [5, 11], "uv_size": [-1, -1]},
+								"down": {"uv": [5, 11], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				},
+				{
+					"name": "buckle",
+					"parent": "flap",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{
+							"origin": [-2, 19.75, -6],
+							"size": [4, 4, 1],
+							"uv": {
+								"north": {"uv": [0, 16], "uv_size": [2, 2]},
+								"east": {"uv": [4, 7], "uv_size": [1, 1]},
+								"south": {"uv": [4, 7], "uv_size": [1, 1]},
+								"west": {"uv": [4, 7], "uv_size": [1, 1]},
+								"up": {"uv": [5, 2], "uv_size": [-1, -1]},
+								"down": {"uv": [5, 8], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				},
+				{
+					"name": "bag",
+					"parent": "backpack",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{
+							"origin": [-8, 13.75, -5],
+							"size": [16, 8, 10],
+							"uv": {
+								"north": {"uv": [0, 12], "uv_size": [8, 4]},
+								"east": {"uv": [1, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 10], "uv_size": [1, 1]},
+								"west": {"uv": [1, 10], "uv_size": [1, 1]},
+								"up": {"uv": [2, 8], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 11], "uv_size": [-1, -1]}
+							}
+						},
+						{
+							"origin": [-8, 21.75, -3],
+							"size": [16, 8, 8],
+							"uv": {
+								"north": {"uv": [1, 10], "uv_size": [1, 1]},
+								"east": {"uv": [1, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 10], "uv_size": [1, 1]},
+								"west": {"uv": [1, 10], "uv_size": [1, 1]},
+								"up": {"uv": [2, 11], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 11], "uv_size": [-1, -1]}
+							}
+						},
+						{
+							"origin": [-6, 11.75, -4],
+							"size": [12, 2, 9],
+							"uv": {
+								"north": {"uv": [1, 7], "uv_size": [1, 1]},
+								"east": {"uv": [1, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 10], "uv_size": [1, 1]},
+								"west": {"uv": [1, 10], "uv_size": [1, 1]},
+								"up": {"uv": [2, 11], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 11], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				},
+				{
+					"name": "leftStrap",
+					"parent": "backpack",
+					"pivot": [4, 28.75, 3.75],
+					"rotation": [11.25, 0, 0],
+					"cubes": [
+						{
+							"origin": [2, 14.75, -0.25],
+							"size": [4, 14, 6],
+							"uv": {
+								"north": {"uv": [1, 10], "uv_size": [1, 1]},
+								"east": {"uv": [1, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 7], "uv_size": [1, 1]},
+								"west": {"uv": [1, 10], "uv_size": [1, 1]},
+								"up": {"uv": [2, 8], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 11], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				},
+				{
+					"name": "rightStrap",
+					"parent": "backpack",
+					"pivot": [-4, 28.75, 3.75],
+					"rotation": [11.25, 0, 0],
+					"cubes": [
+						{
+							"origin": [-6, 14.75, -0.25],
+							"size": [4, 14, 6],
+							"uv": {
+								"north": {"uv": [1, 10], "uv_size": [1, 1]},
+								"east": {"uv": [1, 10], "uv_size": [1, 1]},
+								"south": {"uv": [1, 7], "uv_size": [1, 1]},
+								"west": {"uv": [1, 10], "uv_size": [1, 1]},
+								"up": {"uv": [2, 8], "uv_size": [-1, -1]},
+								"down": {"uv": [2, 11], "uv_size": [-1, -1]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
