@@ -19,6 +19,35 @@ originally by KiworaID / KiwStudio.
 Pack UUIDs and versions are unchanged, so this installs over an existing
 KiwEssentials world without breaking saved data.
 
+## Requirements
+
+**The world must have the "Beta APIs" experiment enabled.** Without it the
+behavior pack does not load at all and the server log shows:
+
+```
+[Scripting] Plugin [Chishiki Essential [BP] FixedHUD - 33.2.5] - requesting
+dependency on beta APIs [@minecraft/server - 2.x.x-beta], but the Beta APIs
+experiment is not enabled.
+```
+
+This comes from upstream: `ChishikiBP/manifest.json` declares
+`"version": "beta"` for both `@minecraft/server` and `@minecraft/server-ui`,
+and the code genuinely uses APIs that only ship in the beta modules:
+
+| API | Used by | Feature that breaks without it |
+| --- | --- | --- |
+| `TextPrimitive`, `world.primitiveShapesManager` | `plugins/floating-text/registry.js` | floating text and leaderboards |
+| `CustomForm`, `ObservableString` | `plugins/clan/chat_clan.js` | clan chat window |
+
+So the dependency cannot simply be pinned to a stable version — those two
+features would have to be rewritten first.
+
+Enabling experiments marks the world as experimental and disables achievements.
+That is expected for any script-based add-on.
+
+DupeGuard is unaffected either way: it asks for stable `@minecraft/server`
+2.4.0 and loads with or without the experiment.
+
 ## Building
 
 ```sh
